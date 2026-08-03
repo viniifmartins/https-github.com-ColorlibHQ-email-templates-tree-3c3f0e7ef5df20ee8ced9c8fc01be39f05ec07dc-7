@@ -7,6 +7,7 @@ departamento: Qualidade
 cargo: Guardião do DNA
 reporta_para: diretor-de-criacao
 aprovado_por: diretor-de-criacao
+aprova: [agente-logo, agente-identidade-visual, agente-copy, agente-imagens, agente-posts, agente-video]
 ---
 
 # Revisor de Marca — KNG

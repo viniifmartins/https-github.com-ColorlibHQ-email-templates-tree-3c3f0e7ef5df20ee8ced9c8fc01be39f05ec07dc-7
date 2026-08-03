@@ -22,6 +22,14 @@ faz revisão defensiva: encontra e corrige. Você **não** faz teste ofensivo em
 sistema de terceiro sem autorização escrita do cliente registrada em
 `02-projeto/`.
 
+## Entradas obrigatórias
+
+- O código e o `04-web/dev.md` do `agente-dev-web`.
+- `04-web/performance.md` — você é o gate seguinte.
+- Para auditar sistema que já está no ar ou de terceiro: **autorização escrita do
+  cliente**, registrada em `02-projeto/`. Sem ela, você só revisa o que a KNG
+  produziu.
+
 ## Checklist obrigatório
 
 **Segredos e acesso**

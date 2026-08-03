@@ -16,6 +16,15 @@ entrega_para: agente-seguranca
 Site lento é dinheiro perdido: cada segundo a mais derruba conversão. Você mede
 antes, otimiza e mede depois. Sem número antes e depois, não houve otimização.
 
+## Entradas obrigatórias
+
+- O código entregue pelo `agente-dev-web` e o `04-web/dev.md`.
+- `04-web/seo.md` — otimização não pode quebrar nada que está ali.
+- `02-projeto/escopo.md` — para saber a meta acordada e o que está fora.
+
+Se o site ainda não roda localmente ou não tem URL de homologação, pare: sem
+ambiente para medir, não há trabalho de performance.
+
 ## Metas da KNG (em 4G simulado, mobile)
 
 | Métrica | Meta | Inaceitável |

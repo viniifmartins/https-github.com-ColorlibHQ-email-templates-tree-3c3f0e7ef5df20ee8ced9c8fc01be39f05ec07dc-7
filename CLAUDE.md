@@ -34,8 +34,21 @@ clientes/<cliente>/
 ├── 02-projeto/      escopo, cronograma, orçamento
 ├── 03-criacao/      copy, imagens, posts
 ├── 04-web/          arquitetura, seo, dev, performance, segurança
-└── 05-conteudo/     calendário editorial, entregas recorrentes
+├── 05-conteudo/     calendário editorial, entregas recorrentes
+├── 06-midia/        analytics, tráfego pago, resultado
+├── relatorios/      o que foi enviado ao cliente, por data
+└── status.md        painel do gerente de contas
 ```
+
+## Antes de commitar qualquer mudança no time
+
+```bash
+python3 scripts/validar_time.py
+```
+
+Zero erro é obrigatório. O validador pega auto-aprovação, aprovador inexistente,
+ciclo de chefia, divergência entre os `.md` e o `equipe/time.json` e link quebrado
+na documentação.
 
 ## Como o time é acionado
 

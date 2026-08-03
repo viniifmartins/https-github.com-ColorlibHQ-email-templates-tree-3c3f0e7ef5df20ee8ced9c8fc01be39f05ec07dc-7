@@ -21,7 +21,7 @@
 └────────────────┘ └───────────────┘ └───────────────┘
 ```
 
-## Os 18 funcionários
+## Os 23 funcionários
 
 | # | Agente | Departamento | Cargo | Aprovado por |
 |---|--------|--------------|-------|--------------|
@@ -43,6 +43,11 @@
 | 16 | `agente-performance` | Tecnologia | Especialista em Performance | diretor-de-tecnologia |
 | 17 | `agente-seguranca` | Tecnologia | Especialista em Segurança | diretor-de-tecnologia |
 | 18 | `agente-revisor-marca` | Qualidade | Guardião do DNA | diretor-de-criacao |
+| 19 | `agente-video` | Criação | Diretor de Vídeo e Motion | revisor-marca → diretor-de-criacao |
+| 20 | `agente-copydesk` | Qualidade | Copidesque | diretor-de-criacao |
+| 21 | `agente-juridico` | Qualidade | Consultor Jurídico | gerente-de-contas |
+| 22 | `agente-analytics` | Mídia e Dados | Analista de Dados | diretor-de-tecnologia |
+| 23 | `agente-trafego-pago` | Mídia e Dados | Gestor de Tráfego | analytics → gerente-de-contas |
 
 ## Linha do tempo de um projeto completo
 
@@ -60,7 +65,22 @@ FASE 3 — WEB
   arquitetura-site → seo (on-page) → dev-web → performance → seguranca → [GATE CLIENTE]
 
 FASE 4 — CONTEÚDO (recorrente)
-  copy + imagens → posts → revisor-marca → [GATE CLIENTE]
+  copy + imagens + video → posts → copydesk → revisor-marca → [GATE CLIENTE]
+
+FASE 5 — MÍDIA E RESULTADO (recorrente)
+  analytics (mede e valida rastreio) → trafego-pago → analytics (lê resultado)
+  juridico entra sempre que houver promessa de resultado ou imagem de pessoa
 ```
 
 `[GATE CLIENTE]` = precisa de `aprovado_cliente`, não basta aprovação interna.
+
+## Cadeias de aprovação (quem carimba, em que ordem)
+
+| Tipo de entregável | Cadeia |
+|---|---|
+| Texto (copy, posts) | `copydesk` → `revisor-marca` → `diretor-de-criacao` → gerente |
+| Visual (logo, identidade, imagens, vídeo) | `revisor-marca` → `diretor-de-criacao` → gerente |
+| Técnico (arquitetura, seo, dev, performance) | `diretor-de-tecnologia` → gerente |
+| Segurança | `agente-seguranca` tem **veto** — nada sobe com risco alto aberto |
+| Mídia paga | `agente-analytics` valida o rastreio → gerente libera a verba |
+| Risco jurídico | `agente-juridico` tem **veto** sobre promessa e uso de imagem |

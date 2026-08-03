@@ -1,0 +1,471 @@
+{
+  "cliente": "padaria-do-ze",
+  "gerado_em": "2026-08-03T10:29:32+00:00",
+  "departamentos": [
+    {
+      "id": "atendimento",
+      "nome": "Atendimento",
+      "cor": "#2D6CDF",
+      "sala": "recepcao"
+    },
+    {
+      "id": "descoberta",
+      "nome": "Descoberta",
+      "cor": "#7B4FD6",
+      "sala": "sala-de-reuniao"
+    },
+    {
+      "id": "planejamento",
+      "nome": "Planejamento",
+      "cor": "#0F9D8C",
+      "sala": "sala-de-reuniao"
+    },
+    {
+      "id": "criacao",
+      "nome": "Criação",
+      "cor": "#E0603A",
+      "sala": "estudio"
+    },
+    {
+      "id": "tecnologia",
+      "nome": "Tecnologia",
+      "cor": "#3A8FC7",
+      "sala": "lab"
+    },
+    {
+      "id": "midia",
+      "nome": "Mídia e Dados",
+      "cor": "#D14D8B",
+      "sala": "midia"
+    },
+    {
+      "id": "qualidade",
+      "nome": "Qualidade",
+      "cor": "#C7A03A",
+      "sala": "estudio"
+    }
+  ],
+  "funcionarios": {
+    "gerente-de-contas": {
+      "estado": "ocioso",
+      "nome": "Gerente de Contas",
+      "departamento": "atendimento",
+      "avatar": {
+        "emoji": "🧑‍💼",
+        "cor": "#2D6CDF",
+        "mesa": [
+          0,
+          0
+        ],
+        "acessorio": "prancheta"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "diretor-de-criacao": {
+      "estado": "ocioso",
+      "nome": "Diretor de Criação",
+      "departamento": "criacao",
+      "avatar": {
+        "emoji": "🎨",
+        "cor": "#E0603A",
+        "mesa": [
+          2,
+          0
+        ],
+        "acessorio": "oculos"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "diretor-de-tecnologia": {
+      "estado": "ocioso",
+      "nome": "Diretor de Tecnologia",
+      "departamento": "tecnologia",
+      "avatar": {
+        "emoji": "🧑‍💻",
+        "cor": "#3A8FC7",
+        "mesa": [
+          4,
+          0
+        ],
+        "acessorio": "fone"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-perguntas-iniciais": {
+      "estado": "entregue",
+      "nome": "Analista de Onboarding",
+      "departamento": "descoberta",
+      "avatar": {
+        "emoji": "📋",
+        "cor": "#7B4FD6",
+        "mesa": [
+          0,
+          2
+        ],
+        "acessorio": "formulario"
+      },
+      "entregavel": "KNG-PADARIA-DESC-01",
+      "com": null
+    },
+    "agente-briefing": {
+      "estado": "entregue",
+      "nome": "Redator de Briefing",
+      "departamento": "descoberta",
+      "avatar": {
+        "emoji": "📝",
+        "cor": "#7B4FD6",
+        "mesa": [
+          1,
+          2
+        ],
+        "acessorio": "caderno"
+      },
+      "entregavel": "KNG-PADARIA-DESC-02",
+      "com": null
+    },
+    "agente-dna-marca": {
+      "estado": "entregue",
+      "nome": "Estrategista de Marca",
+      "departamento": "descoberta",
+      "avatar": {
+        "emoji": "🧬",
+        "cor": "#7B4FD6",
+        "mesa": [
+          2,
+          2
+        ],
+        "acessorio": "quadro"
+      },
+      "entregavel": "KNG-PADARIA-MARCA-00",
+      "com": null
+    },
+    "agente-projeto": {
+      "estado": "ocioso",
+      "nome": "Gerente de Projeto",
+      "departamento": "planejamento",
+      "avatar": {
+        "emoji": "🗓️",
+        "cor": "#0F9D8C",
+        "mesa": [
+          3,
+          2
+        ],
+        "acessorio": "gantt"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-logo": {
+      "estado": "ocioso",
+      "nome": "Designer de Logo",
+      "departamento": "criacao",
+      "avatar": {
+        "emoji": "✏️",
+        "cor": "#E0603A",
+        "mesa": [
+          0,
+          4
+        ],
+        "acessorio": "compasso"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-identidade-visual": {
+      "estado": "ocioso",
+      "nome": "Designer de Identidade",
+      "departamento": "criacao",
+      "avatar": {
+        "emoji": "🎯",
+        "cor": "#E0603A",
+        "mesa": [
+          1,
+          4
+        ],
+        "acessorio": "paleta"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-copy": {
+      "estado": "bloqueado",
+      "nome": "Redator Publicitário",
+      "departamento": "criacao",
+      "avatar": {
+        "emoji": "🖋️",
+        "cor": "#E0603A",
+        "mesa": [
+          2,
+          4
+        ],
+        "acessorio": "maquina-de-escrever"
+      },
+      "entregavel": "KNG-PADARIA-CRIA-01",
+      "com": null
+    },
+    "agente-imagens": {
+      "estado": "ocioso",
+      "nome": "Diretor de Arte / Imagens",
+      "departamento": "criacao",
+      "avatar": {
+        "emoji": "📸",
+        "cor": "#E0603A",
+        "mesa": [
+          3,
+          4
+        ],
+        "acessorio": "camera"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-posts": {
+      "estado": "ocioso",
+      "nome": "Social Media",
+      "departamento": "criacao",
+      "avatar": {
+        "emoji": "📱",
+        "cor": "#E0603A",
+        "mesa": [
+          4,
+          4
+        ],
+        "acessorio": "celular"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-revisor-marca": {
+      "estado": "entregue",
+      "nome": "Guardião do DNA",
+      "departamento": "qualidade",
+      "avatar": {
+        "emoji": "🔍",
+        "cor": "#C7A03A",
+        "mesa": [
+          5,
+          4
+        ],
+        "acessorio": "lupa"
+      },
+      "entregavel": "KNG-PADARIA-REV-01",
+      "com": null
+    },
+    "agente-arquitetura-site": {
+      "estado": "ocioso",
+      "nome": "Arquiteto de Informação",
+      "departamento": "tecnologia",
+      "avatar": {
+        "emoji": "🗺️",
+        "cor": "#3A8FC7",
+        "mesa": [
+          0,
+          6
+        ],
+        "acessorio": "planta"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-seo": {
+      "estado": "ocioso",
+      "nome": "Especialista em SEO",
+      "departamento": "tecnologia",
+      "avatar": {
+        "emoji": "🔎",
+        "cor": "#3A8FC7",
+        "mesa": [
+          1,
+          6
+        ],
+        "acessorio": "grafico"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-dev-web": {
+      "estado": "ocioso",
+      "nome": "Desenvolvedor Web",
+      "departamento": "tecnologia",
+      "avatar": {
+        "emoji": "⌨️",
+        "cor": "#3A8FC7",
+        "mesa": [
+          2,
+          6
+        ],
+        "acessorio": "monitor-duplo"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-performance": {
+      "estado": "ocioso",
+      "nome": "Especialista em Performance",
+      "departamento": "tecnologia",
+      "avatar": {
+        "emoji": "⚡",
+        "cor": "#3A8FC7",
+        "mesa": [
+          3,
+          6
+        ],
+        "acessorio": "cronometro"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-seguranca": {
+      "estado": "ocioso",
+      "nome": "Especialista em Segurança",
+      "departamento": "tecnologia",
+      "avatar": {
+        "emoji": "🛡️",
+        "cor": "#3A8FC7",
+        "mesa": [
+          4,
+          6
+        ],
+        "acessorio": "escudo"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-trafego-pago": {
+      "estado": "ocioso",
+      "nome": "Gestor de Tráfego",
+      "departamento": "midia",
+      "avatar": {
+        "emoji": "📈",
+        "cor": "#D14D8B",
+        "mesa": [
+          0,
+          8
+        ],
+        "acessorio": "painel"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-analytics": {
+      "estado": "ocioso",
+      "nome": "Analista de Dados",
+      "departamento": "midia",
+      "avatar": {
+        "emoji": "📊",
+        "cor": "#D14D8B",
+        "mesa": [
+          1,
+          8
+        ],
+        "acessorio": "dashboard"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-video": {
+      "estado": "ocioso",
+      "nome": "Diretor de Vídeo e Motion",
+      "departamento": "criacao",
+      "avatar": {
+        "emoji": "🎬",
+        "cor": "#E0603A",
+        "mesa": [
+          6,
+          4
+        ],
+        "acessorio": "claquete"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-copydesk": {
+      "estado": "ocioso",
+      "nome": "Copidesque",
+      "departamento": "qualidade",
+      "avatar": {
+        "emoji": "🖍️",
+        "cor": "#C7A03A",
+        "mesa": [
+          7,
+          4
+        ],
+        "acessorio": "caneta-vermelha"
+      },
+      "entregavel": null,
+      "com": null
+    },
+    "agente-juridico": {
+      "estado": "ocioso",
+      "nome": "Consultor Jurídico",
+      "departamento": "qualidade",
+      "avatar": {
+        "emoji": "⚖️",
+        "cor": "#C7A03A",
+        "mesa": [
+          6,
+          0
+        ],
+        "acessorio": "balanca"
+      },
+      "entregavel": null,
+      "com": null
+    }
+  },
+  "entregaveis": [
+    {
+      "id": "KNG-PADARIA-DESC-02",
+      "titulo": "Briefing",
+      "arquivo": "clientes/padaria-do-ze/00-descoberta/briefing.md",
+      "autor": "agente-briefing",
+      "aprovador": "gerente-de-contas",
+      "status": "aprovado_cliente",
+      "versao": "v1"
+    },
+    {
+      "id": "KNG-PADARIA-DESC-01",
+      "titulo": "Respostas do onboarding",
+      "arquivo": "clientes/padaria-do-ze/00-descoberta/respostas.md",
+      "autor": "agente-perguntas-iniciais",
+      "aprovador": "gerente-de-contas",
+      "status": "aprovado_interno",
+      "versao": "v1"
+    },
+    {
+      "id": "KNG-PADARIA-MARCA-00",
+      "titulo": "DNA da Marca",
+      "arquivo": "clientes/padaria-do-ze/01-marca/dna-marca.md",
+      "autor": "agente-dna-marca",
+      "aprovador": "diretor-de-criacao",
+      "status": "aprovado_cliente",
+      "versao": "v1"
+    },
+    {
+      "id": "KNG-PADARIA-REV-01",
+      "titulo": "Parecer — Revisor de Marca sobre Post 01 (Encomendas de Natal)",
+      "arquivo": "clientes/padaria-do-ze/03-criacao/parecer-revisor-post-01.md",
+      "autor": "agente-revisor-marca",
+      "aprovador": "diretor-de-criacao",
+      "status": "ajustes_solicitados",
+      "versao": "v1"
+    },
+    {
+      "id": "KNG-PADARIA-CRIA-01",
+      "titulo": "Post 01 — Encomendas de Natal",
+      "arquivo": "clientes/padaria-do-ze/03-criacao/post-01-natal.md",
+      "autor": "agente-copy",
+      "aprovador": "agente-copydesk",
+      "status": "ajustes_solicitados",
+      "versao": "v1"
+    }
+  ],
+  "resumo": {
+    "total": 5,
+    "aprovado_cliente": 2,
+    "em_revisao": 0,
+    "bloqueado": 2
+  }
+}

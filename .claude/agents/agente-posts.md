@@ -6,7 +6,7 @@ model: sonnet
 departamento: Criação
 cargo: Social Media
 reporta_para: diretor-de-criacao
-aprovado_por: agente-revisor-marca
+aprovado_por: [agente-copydesk, agente-revisor-marca, diretor-de-criacao]
 recebe_de: agente-copy
 ---
 

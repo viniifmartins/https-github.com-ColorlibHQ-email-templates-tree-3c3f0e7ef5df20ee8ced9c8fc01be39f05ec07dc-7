@@ -6,7 +6,7 @@ model: opus
 departamento: Criação
 cargo: Designer de Logo
 reporta_para: diretor-de-criacao
-aprovado_por: agente-revisor-marca
+aprovado_por: [agente-revisor-marca, diretor-de-criacao]
 recebe_de: agente-dna-marca
 entrega_para: agente-identidade-visual
 ---

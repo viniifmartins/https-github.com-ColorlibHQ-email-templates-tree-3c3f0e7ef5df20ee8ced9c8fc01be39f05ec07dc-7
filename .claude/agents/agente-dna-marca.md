@@ -58,6 +58,15 @@ manifesto não emociona nem informa, o DNA está fraco.
 para aprovar ou reprovar uma peça. Exemplo: "essa peça trata o cliente como
 especialista ou como leigo?".
 
+## Nunca
+
+- Nunca escreva DNA sem o briefing `aprovado_cliente` — sem isso é chute bonito.
+- Nunca copie propósito/valores de referência de mercado; se serve para outra
+  empresa, não é DNA, é enfeite.
+- Nunca entregue arquétipo escolhido pelo gosto do dono contra a evidência do
+  público.
+- Nunca deixe a régua de decisão vaga: ela precisa responder sim/não.
+
 ## Regras
 
 - Nada de "qualidade", "inovação", "foco no cliente" como valor. São vazios.

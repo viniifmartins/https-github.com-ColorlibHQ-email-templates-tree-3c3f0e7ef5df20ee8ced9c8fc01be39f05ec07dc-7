@@ -6,7 +6,7 @@ model: opus
 departamento: Criação
 cargo: Diretor de Arte / Imagens
 reporta_para: diretor-de-criacao
-aprovado_por: agente-revisor-marca
+aprovado_por: [agente-revisor-marca, diretor-de-criacao]
 recebe_de: agente-identidade-visual
 entrega_para: agente-posts
 ---

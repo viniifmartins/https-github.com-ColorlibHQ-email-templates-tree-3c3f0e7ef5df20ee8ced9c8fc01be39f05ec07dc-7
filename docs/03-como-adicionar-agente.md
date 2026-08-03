@@ -44,6 +44,22 @@ Rode `python3 -c "import json;json.load(open('equipe/time.json'))"` para validar
 Inclua a linha correspondente na tabela "quem aciono agora?" do
 `.claude/agents/gerente-de-contas.md` e no organograma de `docs/00-visao-geral.md`.
 
+## 5. Rode os dois validadores
+
+```bash
+python3 scripts/validar_time.py          # estrutura do time
+python3 scripts/validar_entregaveis.py   # entregáveis dos clientes
+```
+
+Zero erro antes de commitar.
+
+## Pegadinha: agente novo só aparece depois de reabrir a sessão
+
+O Claude Code carrega a lista de subagentes no início da sessão. Se você criar um
+`.claude/agents/*.md` no meio de uma conversa, ele ainda não pode ser acionado
+como subagente ali — **feche e reabra a sessão**. Enquanto isso, os validadores
+já conseguem checá-lo normalmente, porque leem o arquivo direto do disco.
+
 ## Boas práticas de prompt aprendidas aqui
 
 - **Descrição vale mais que corpo.** O `description` é o que faz o agente ser
@@ -56,3 +72,6 @@ Inclua a linha correspondente na tabela "quem aciono agora?" do
 - **Exija citação.** "Cite o trecho do DNA que foi violado" força verificação
   real em vez de opinião.
 - **Um agente, um entregável.** Agente que faz três coisas faz as três mal.
+- **O gate precisa estar na seção de entradas, não só nas regras.** Nos testes, o
+  que fez o `agente-dna-marca` recusar trabalhar sob pressão de prazo foi a linha
+  "Sem isso, pare" logo na primeira seção — não a proibição lá no fim.

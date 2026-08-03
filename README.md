@@ -8,7 +8,11 @@ coordena tudo e é o único que fala com o cliente.
 
 ```
 CLAUDE.md                    regras globais que todo agente obedece
-.claude/agents/              os 18 funcionários (1 arquivo = 1 agente)
+.claude/agents/              os 23 funcionários (1 arquivo = 1 agente)
+.claude/commands/            atalhos: /novo-cliente /status /proxima-etapa /aprovar ...
+scripts/validar_time.py      testa a consistência do time (rode antes de commitar)
+scripts/validar_entregaveis.py  testa os entregáveis contra o protocolo
+scripts/estado.py            gera o estado do escritório para a visualização
 docs/00-visao-geral.md       organograma + linha do tempo do projeto
 docs/01-fluxo-de-aprovacao.md  estados, quem aprova o quê, regra dos 2 ciclos
 docs/02-protocolo-de-handoff.md  formato obrigatório de todo entregável
@@ -24,9 +28,21 @@ clientes/_exemplo/           estrutura padrão de pasta por cliente
 **Atendimento** · gerente-de-contas
 **Descoberta** · perguntas-iniciais → briefing → dna-marca
 **Planejamento** · projeto
-**Criação** · diretor-de-criacao · logo · identidade-visual · copy · imagens · posts
+**Criação** · diretor-de-criacao · logo · identidade-visual · copy · imagens · posts · video
 **Tecnologia** · diretor-de-tecnologia · arquitetura-site · seo · dev-web · performance · seguranca
-**Qualidade** · revisor-marca (guardião do DNA, revisa toda peça criativa)
+**Mídia e Dados** · analytics · trafego-pago
+**Qualidade** · revisor-marca (DNA) · copydesk (língua) · juridico (risco)
+
+## Atalhos
+
+| Comando | O que faz |
+|---------|-----------|
+| `/novo-cliente Padaria do Zé` | cria a pasta, o painel e inicia a descoberta |
+| `/status padaria-do-ze` | mostra o que está pronto, parado e com quem |
+| `/proxima-etapa padaria-do-ze` | o gerente decide e executa o próximo passo |
+| `/aprovar <arquivo>` | roda a cadeia de aprovação do entregável |
+| `/relatorio-cliente padaria-do-ze` | escreve o relatório para enviar ao cliente |
+| `/auditar-time` | testa a consistência do time e corrige o que achar |
 
 ## Como usar
 
@@ -46,10 +62,32 @@ especialista direto:
 
 ## As 3 regras que fazem isso funcionar
 
-1. **Ninguém aprova o próprio trabalho.** Todo agente tem um `aprovado_por`.
+1. **Ninguém aprova o próprio trabalho.** Todo agente tem um `aprovado_por`, que
+   pode ser uma **cadeia**: um post passa por `copydesk` (língua) →
+   `revisor-marca` (DNA) → `diretor-de-criacao` (conceito), nessa ordem.
 2. **Tudo vira arquivo com status.** `rascunho → em_revisao → aprovado_interno → aprovado_cliente`.
 3. **O DNA da marca é a régua.** Peça que contraria o DNA volta, com o trecho
    violado citado.
+
+## Exemplo real
+
+`clientes/padaria-do-ze/` é um cliente fictício rodado de ponta a ponta na
+descoberta — serve de referência de formato e prova que os portões funcionam.
+
+## Testando o time
+
+```bash
+python3 scripts/validar_time.py                     # estrutura do time
+python3 scripts/validar_entregaveis.py padaria-do-ze  # entregáveis do cliente
+python3 scripts/estado.py padaria-do-ze --salvar    # estado do escritório em JSON
+```
+
+O que já foi validado rodando o time de verdade está em
+[docs/05-teste-do-fluxo.md](docs/05-teste-do-fluxo.md).
+
+O validador checa auto-aprovação, aprovador inexistente, ciclo de chefia,
+divergência entre os `.md` e o `time.json`, mesa ocupada por duas pessoas,
+agente fora do roteamento e link quebrado na documentação.
 
 ## Fase 2
 
