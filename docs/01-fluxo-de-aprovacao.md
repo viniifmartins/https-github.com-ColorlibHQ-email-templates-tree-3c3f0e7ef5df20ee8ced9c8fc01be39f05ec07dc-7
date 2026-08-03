@@ -6,11 +6,18 @@
 |--------|-----------|--------------------------|
 | `rascunho` | o agente executor ainda está trabalhando | o próprio executor |
 | `em_revisao` | entregue, esperando o aprovador | o aprovador |
-| `ajustes_solicitados` | reprovado com motivo escrito | o executor (volta para rascunho) |
+| `ajustes_solicitados` | reprovado com motivo escrito — o **trabalho** precisa mudar | o executor (volta para rascunho) |
+| `bloqueado` | o trabalho pode estar certo, mas **não pode seguir**: falta insumo de terceiro, há veto do jurídico ou da segurança, ou uma dependência não foi aprovada | quem destrava a causa (cliente, outro agente, o gerente) |
 | `aprovado_interno` | passou na revisão da KNG | gerente-de-contas |
 | `aprovado_cliente` | o cliente assinou embaixo | gerente-de-contas |
 
 Um entregável nunca pula de `rascunho` para `aprovado_interno`.
+
+**`ajustes_solicitados` × `bloqueado`** — a diferença importa para saber a quem
+cobrar. "Reescreva a headline" é `ajustes_solicitados` e a bola está com o
+executor. "O plano está pronto, mas não existe medição instalada e a capacidade
+da cozinha é desconhecida" é `bloqueado`: o executor fez a parte dele, quem
+destrava é outro.
 
 ## Quem aprova o quê
 

@@ -19,9 +19,15 @@ DIR_AGENTES = RAIZ / ".claude" / "agents"
 TIME = json.loads((RAIZ / "equipe" / "time.json").read_text(encoding="utf-8"))
 # quem revisa (revisor-marca, copydesk, seguranca, juridico) pode, por definicao,
 # depender de um entregavel ainda nao aprovado: e exatamente isso que ele analisa.
-CONTROLE = {f["id"] for f in TIME["funcionarios"] if f.get("nivel") == "controle"}
+# quem so escreve parecer dentro da pasta do cliente: controle e lideranca.
+# parecer nao e entregavel — nao carrega ficha e pode analisar peca nao aprovada.
+REVISORES = {f["id"] for f in TIME["funcionarios"] if f.get("nivel") in ("controle", "lideranca")}
+CONTROLE = REVISORES
+VETO = {f["id"] for f in TIME["funcionarios"] if f.get("poder_de_veto")}
+# marcas de veto no corpo de um laudo
+BLOQUEIO = ["RISCO ALTO", "VETADO", "não publicar", "nao publicar"]
 
-STATUS_VALIDOS = ["rascunho", "em_revisao", "ajustes_solicitados", "aprovado_interno", "aprovado_cliente"]
+STATUS_VALIDOS = ["rascunho", "em_revisao", "ajustes_solicitados", "bloqueado", "aprovado_interno", "aprovado_cliente"]
 APROVADOS = ["aprovado_interno", "aprovado_cliente"]
 OBRIGATORIOS = ["id", "cliente", "fase", "titulo", "autor", "aprovador", "status", "versao", "data"]
 
@@ -70,12 +76,24 @@ for pasta in pastas:
     for arquivo in sorted(pasta.rglob("*.md")):
         front, corpo = frontmatter(arquivo)
         if not front.get("status"):
+            if front.get("id") or front.get("autor"):
+                # tem frontmatter de entregavel pela metade: nao pode passar batido
+                erros.append(f"{arquivo.relative_to(RAIZ)}: tem 'id'/'autor' mas nao tem 'status'")
+                if front.get("id"):
+                    ids[front["id"]] = arquivo
             continue  # README, anotacao solta
         docs.append((arquivo, front, corpo))
         if front.get("id"):
             if front["id"] in ids:
                 erros.append(f"{arquivo.name}: id '{front['id']}' duplicado (ja usado em {ids[front['id']].name})")
             ids[front["id"]] = arquivo
+
+    # laudos de quem tem veto (juridico, seguranca) que bloqueiam outra peca
+    vetos: dict[str, list[str]] = {}
+    for arquivo, front, corpo in docs:
+        if front.get("autor") in VETO and any(m in corpo for m in BLOQUEIO):
+            for alvo in como_lista(front.get("analisa")) or como_lista(front.get("depende_de"))[:1]:
+                vetos.setdefault(alvo, []).append(f"{front.get('id')} ({arquivo.name})")
 
     for arquivo, front, corpo in docs:
         total += 1
@@ -93,20 +111,37 @@ for pasta in pastas:
         if autor and autor not in cadeias:
             erros.append(f"{rel}: autor '{autor}' nao e um agente do time")
 
-        aprovador = front.get("aprovador")
-        if aprovador and aprovador not in cadeias and aprovador != "gerente-de-contas":
-            erros.append(f"{rel}: aprovador '{aprovador}' nao e um agente do time")
-        if autor and aprovador and autor == aprovador:
-            erros.append(f"{rel}: AUTO-APROVACAO — autor e aprovador sao o mesmo agente")
+        # 'aprovador' pode vir como agente unico ou como a cadeia inteira
+        aprovadores = como_lista(front.get("aprovador"))
+        for aprovador in aprovadores:
+            if aprovador not in cadeias and aprovador != "gerente-de-contas":
+                erros.append(f"{rel}: aprovador '{aprovador}' nao e um agente do time")
+            if autor and autor == aprovador:
+                erros.append(f"{rel}: AUTO-APROVACAO — autor e aprovador sao o mesmo agente")
 
         cadeia = cadeias.get(autor or "", [])
-        if cadeia and aprovador and aprovador != cadeia[0]:
+        if cadeia and aprovadores:
+            if len(aprovadores) > 1 and aprovadores != cadeia:
+                erros.append(
+                    f"{rel}: cadeia no frontmatter ({' -> '.join(aprovadores)}) difere da declarada por {autor} ({' -> '.join(cadeia)})"
+                )
+            elif len(aprovadores) == 1 and aprovadores[0] != cadeia[0]:
+                avisos.append(
+                    f"{rel}: aprovador '{aprovadores[0]}' nao e o primeiro da cadeia de {autor} ({' -> '.join(cadeia)})"
+                )
+
+        # veto de juridico/seguranca vale sobre toda a cadeia
+        if front.get("id") in vetos and status in APROVADOS:
+            erros.append(
+                f"{rel}: VETO ABERTO — aprovado apesar do laudo {', '.join(vetos[front['id']])}"
+            )
+        elif front.get("id") in vetos and status not in ("ajustes_solicitados", "rascunho"):
             avisos.append(
-                f"{rel}: aprovador '{aprovador}' nao e o primeiro da cadeia de {autor} ({' -> '.join(cadeia)})"
+                f"{rel}: tem laudo de bloqueio ({', '.join(vetos[front['id']])}) e status '{status}' — deveria voltar ao autor"
             )
 
         # a brecha encontrada no teste: aprovado com ficha em branco
-        if status in APROVADOS:
+        if status in APROVADOS and autor not in REVISORES:
             if "Ficha de Aprovação" not in corpo:
                 erros.append(f"{rel}: status '{status}' sem Ficha de Aprovacao no arquivo")
             elif not any(marca in corpo for marca in ("[x]", "☑", "**Decisão:** aprovado", "Decisão: aprovado")):
@@ -121,8 +156,8 @@ for pasta in pastas:
                 dep_front, _ = frontmatter(ids[dep])
                 if (
                     str(dep_front.get("status")) not in APROVADOS
-                    and status != "rascunho"
-                    and autor not in CONTROLE
+                    and status not in ("rascunho", "bloqueado")
+                    and autor not in REVISORES
                 ):
                     erros.append(
                         f"{rel}: FILA FURADA — depende de '{dep}', que esta '{dep_front.get('status')}'"

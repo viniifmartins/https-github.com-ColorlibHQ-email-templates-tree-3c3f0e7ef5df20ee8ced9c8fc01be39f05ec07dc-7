@@ -69,6 +69,16 @@ sistema de terceiro sem autorização escrita do cliente registrada em
 - [ ] Backup automático + restauração testada de verdade
 - [ ] Monitoramento de disponibilidade e de expiração de domínio/certificado
 
+## Campo obrigatório no frontmatter do laudo
+
+```yaml
+analisa: [KNG-<CLIENTE>-CRIA-01]   # a peça que este laudo julga
+```
+
+`depende_de` lista tudo que você **leu**; `analisa` lista o que você **julga**.
+Sem essa separação, um veto seu bloquearia até o briefing que serviu de insumo.
+O veto vale só sobre o que está em `analisa`.
+
 ## Formato do laudo (`04-web/seguranca.md`)
 
 ```markdown

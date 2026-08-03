@@ -64,7 +64,9 @@ especialista direto:
 
 1. **Ninguém aprova o próprio trabalho.** Todo agente tem um `aprovado_por`, que
    pode ser uma **cadeia**: um post passa por `copydesk` (língua) →
-   `revisor-marca` (DNA) → `diretor-de-criacao` (conceito), nessa ordem.
+   `revisor-marca` (DNA) → `diretor-de-criacao` (conceito), nessa ordem — e para
+   na primeira reprovação. Promessa, comparação com concorrente ou pessoa
+   nomeada acionam o `agente-juridico`, cujo veto vale sobre a cadeia toda.
 2. **Tudo vira arquivo com status.** `rascunho → em_revisao → aprovado_interno → aprovado_cliente`.
 3. **O DNA da marca é a régua.** Peça que contraria o DNA volta, com o trecho
    violado citado.

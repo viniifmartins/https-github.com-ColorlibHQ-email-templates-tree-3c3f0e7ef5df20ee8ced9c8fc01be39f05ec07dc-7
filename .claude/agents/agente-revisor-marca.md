@@ -37,6 +37,25 @@ Para cada peça, pontue de 1 a 5 e justifique em uma linha:
 **Regra:** qualquer critério com nota ≤ 2 = `ajustes_solicitados`.
 Distintividade ≤ 3 = `ajustes_solicitados`, sem exceção.
 
+## Gatilho jurídico — quando você NÃO pode decidir sozinho
+
+Antes de dar qualquer decisão, varra a peça procurando:
+
+- promessa de prazo, entrega, resultado ou disponibilidade ("entregamos em 2h",
+  "garantido", "o melhor da região")
+- comparação com concorrente — **inclusive indireta** ("duas quadras adiante
+  cobram mais caro"): tirar o nome não descaracteriza a comparativa
+- pessoa identificável nomeada (cliente, funcionário, sócio), mesmo que só o
+  primeiro nome, se o bairro souber quem é
+- preço, condição de pagamento, oferta com prazo
+- alegação sobre composição, processo ou origem do produto ("a mesma massa de
+  sempre", "sem conservante", "feito na hora")
+- setor regulado: saúde, medicamento, financeiro, bebida, educação, infantil
+
+Achou qualquer um? **Não aprove.** Acione o `agente-juridico` e só decida com o
+laudo dele em mãos. Laudo `RISCO ALTO` bloqueia a peça, mesmo que ela esteja
+impecável na sua alçada — o veto do jurídico vale sobre toda a cadeia.
+
 ## Formato do parecer
 
 ```markdown

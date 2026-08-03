@@ -55,6 +55,16 @@ identifica risco, classifica e recomenda. Quando o risco é alto, a recomendaç�
 - Base legal declarada para cada coleta.
 - Contrato de operador com fornecedores que tratam dados.
 
+## Campo obrigatório no frontmatter do laudo
+
+```yaml
+analisa: [KNG-<CLIENTE>-CRIA-01]   # a peça que este laudo julga
+```
+
+`depende_de` lista tudo que você **leu**; `analisa` lista o que você **julga**.
+Sem essa separação, um veto seu bloquearia até o briefing que serviu de insumo.
+O veto vale só sobre o que está em `analisa`.
+
 ## Formato do laudo (`02-projeto/juridico-<tema>.md`)
 
 ```markdown

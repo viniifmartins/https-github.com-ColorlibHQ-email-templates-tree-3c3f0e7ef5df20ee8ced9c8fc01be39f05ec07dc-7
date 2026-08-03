@@ -24,6 +24,7 @@ MAPA = {
     "rascunho": "trabalhando",
     "em_revisao": "em_revisao",
     "ajustes_solicitados": "bloqueado",
+    "bloqueado": "bloqueado",
     "aprovado_interno": "entregue",
     "aprovado_cliente": "entregue",
 }

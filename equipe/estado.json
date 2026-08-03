@@ -1,6 +1,6 @@
 {
   "cliente": "padaria-do-ze",
-  "gerado_em": "2026-08-03T10:29:32+00:00",
+  "gerado_em": "2026-08-03T10:56:12+00:00",
   "departamentos": [
     {
       "id": "atendimento",
@@ -47,7 +47,7 @@
   ],
   "funcionarios": {
     "gerente-de-contas": {
-      "estado": "ocioso",
+      "estado": "revisando",
       "nome": "Gerente de Contas",
       "departamento": "atendimento",
       "avatar": {
@@ -59,11 +59,11 @@
         ],
         "acessorio": "prancheta"
       },
-      "entregavel": null,
-      "com": null
+      "entregavel": "KNG-PADARIA-JUR-01",
+      "com": "agente-juridico"
     },
     "diretor-de-criacao": {
-      "estado": "ocioso",
+      "estado": "entregue",
       "nome": "Diretor de Criação",
       "departamento": "criacao",
       "avatar": {
@@ -75,7 +75,7 @@
         ],
         "acessorio": "oculos"
       },
-      "entregavel": null,
+      "entregavel": "KNG-PADARIA-DC-01",
       "com": null
     },
     "diretor-de-tecnologia": {
@@ -335,7 +335,7 @@
       "com": null
     },
     "agente-trafego-pago": {
-      "estado": "ocioso",
+      "estado": "bloqueado",
       "nome": "Gestor de Tráfego",
       "departamento": "midia",
       "avatar": {
@@ -347,7 +347,7 @@
         ],
         "acessorio": "painel"
       },
-      "entregavel": null,
+      "entregavel": "KNG-PADARIA-MIDIA-01",
       "com": null
     },
     "agente-analytics": {
@@ -383,7 +383,7 @@
       "com": null
     },
     "agente-copydesk": {
-      "estado": "ocioso",
+      "estado": "entregue",
       "nome": "Copidesque",
       "departamento": "qualidade",
       "avatar": {
@@ -395,11 +395,11 @@
         ],
         "acessorio": "caneta-vermelha"
       },
-      "entregavel": null,
+      "entregavel": "KNG-PADARIA-COPYDESK-01",
       "com": null
     },
     "agente-juridico": {
-      "estado": "ocioso",
+      "estado": "em_revisao",
       "nome": "Consultor Jurídico",
       "departamento": "qualidade",
       "avatar": {
@@ -411,8 +411,8 @@
         ],
         "acessorio": "balanca"
       },
-      "entregavel": null,
-      "com": null
+      "entregavel": "KNG-PADARIA-JUR-01",
+      "com": "gerente-de-contas"
     }
   },
   "entregaveis": [
@@ -444,13 +444,40 @@
       "versao": "v1"
     },
     {
+      "id": "KNG-PADARIA-JUR-01",
+      "titulo": "Análise de Risco Jurídico — Post 01 (Encomendas de Natal), v2",
+      "arquivo": "clientes/padaria-do-ze/02-projeto/juridico-post-01-natal.md",
+      "autor": "agente-juridico",
+      "aprovador": "gerente-de-contas",
+      "status": "em_revisao",
+      "versao": "v1"
+    },
+    {
+      "id": "KNG-PADARIA-COPYDESK-01",
+      "titulo": "Parecer de Copidesque — Post 01 (Encomendas de Natal), v2",
+      "arquivo": "clientes/padaria-do-ze/03-criacao/parecer-copydesk-post-01.md",
+      "autor": "agente-copydesk",
+      "aprovador": "diretor-de-criacao",
+      "status": "aprovado_interno",
+      "versao": "v2"
+    },
+    {
+      "id": "KNG-PADARIA-DC-01",
+      "titulo": "Parecer — Diretor de Criação sobre Post 01 (Encomendas de Natal), v2",
+      "arquivo": "clientes/padaria-do-ze/03-criacao/parecer-dc-post-01.md",
+      "autor": "diretor-de-criacao",
+      "aprovador": "gerente-de-contas",
+      "status": "aprovado_interno",
+      "versao": "v1"
+    },
+    {
       "id": "KNG-PADARIA-REV-01",
       "titulo": "Parecer — Revisor de Marca sobre Post 01 (Encomendas de Natal)",
       "arquivo": "clientes/padaria-do-ze/03-criacao/parecer-revisor-post-01.md",
       "autor": "agente-revisor-marca",
       "aprovador": "diretor-de-criacao",
-      "status": "ajustes_solicitados",
-      "versao": "v1"
+      "status": "aprovado_interno",
+      "versao": "v2"
     },
     {
       "id": "KNG-PADARIA-CRIA-01",
@@ -459,13 +486,25 @@
       "autor": "agente-copy",
       "aprovador": "agente-copydesk",
       "status": "ajustes_solicitados",
+      "versao": "v2"
+    },
+    {
+      "id": "KNG-PADARIA-MIDIA-01",
+      "titulo": "Plano de Mídia — Encomendas de Natal",
+      "arquivo": "clientes/padaria-do-ze/06-midia/trafego.md",
+      "autor": "agente-trafego-pago",
+      "aprovador": [
+        "agente-analytics",
+        "gerente-de-contas"
+      ],
+      "status": "bloqueado",
       "versao": "v1"
     }
   ],
   "resumo": {
-    "total": 5,
+    "total": 9,
     "aprovado_cliente": 2,
-    "em_revisao": 0,
-    "bloqueado": 2
+    "em_revisao": 1,
+    "bloqueado": 1
   }
 }

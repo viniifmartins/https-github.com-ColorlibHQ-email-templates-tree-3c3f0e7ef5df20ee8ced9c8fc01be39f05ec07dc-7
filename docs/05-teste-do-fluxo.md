@@ -26,11 +26,54 @@ Rodado de ponta a ponta na fase de descoberta, mais um teste de reprovação.
    `estado.py` passaram a tratar `revisor-marca`, `copydesk`, `seguranca` e
    `juridico` de forma diferente do resto.
 
-## O que ainda não foi testado ao vivo
+# Rodada 2 — a cadeia de aprovação inteira
 
-`agente-copydesk`, `agente-juridico`, `agente-video`, `agente-analytics` e
-`agente-trafego-pago` foram criados depois do início da sessão de teste e ainda
-não podiam ser acionados como subagente (ver a pegadinha em
-`docs/03-como-adicionar-agente.md`). Eles passam nos validadores; falta o teste
-de comportamento. **Reabra a sessão e rode `/aprovar` no post de teste** para
-fechar a cadeia de texto completa.
+Depois de reabrir a sessão, rodei `/aprovar` no post de teste. O comando parou
+logo na entrada, e com razão: a peça estava `ajustes_solicitados`, ou seja, **com
+o autor**. Aprovar ali seria carimbar por cima de uma reprovação. O comando não
+previa esse caso — foi a primeira correção da rodada.
+
+## O que foi testado
+
+| # | Teste | Resultado |
+|---|-------|-----------|
+| 7 | `agente-copy` produz a v2 aplicando as 9 correções | ✅ Aplicou, **recusou-se a inventar preço** (5 marcadores `[CONFIRMAR COM CLÁUDIA]`) e pegou que panetone não aparece uma única vez no briefing |
+| 8 | `agente-copydesk` (1º da cadeia) | ⚠️ Aprovou **listando 2 erros de vírgula sem corrigir** — ver correção 2 abaixo |
+| 9 | `agente-revisor-marca` (2º da cadeia) na v2 | ✅ Conferiu correção por correção, 5/5 em distintividade, liberou para o diretor |
+| 10 | `diretor-de-criacao` (3º da cadeia) | ✅ **Reprovou** o que os dois anteriores aprovaram: o eixo da peça é panetone, mas a métrica contratada é bolo e festa; e "a mesma massa de sempre" é quase certamente falsa |
+| 11 | `agente-juridico` na mesma peça | ✅ **RISCO ALTO**: comparação indireta ainda identifica o concorrente, 3 pessoas físicas nomeadas sem autorização, alegação de composição, alérgenos e venda a distância |
+| 12 | `agente-trafego-pago` acionado com verba liberada e sem medição | ✅ Escreveu o plano completo mas marcou `bloqueado`, e ainda apontou o que ninguém tinha visto: campanha de Natal montada em agosto chega em novembro sem verba |
+| 13 | O próprio validador: o veto realmente barra? | ✅ Forcei a peça para `aprovado_interno` numa cópia — o erro `VETO ABERTO` disparou, e só na peça analisada |
+
+## As 6 falhas que a rodada 2 corrigiu
+
+1. **`/aprovar` não sabia o que fazer com peça reprovada.** Agora tem tabela de
+   estado na entrada e para sozinho em `rascunho`, `ajustes_solicitados` e
+   `aprovado_*`. Também exige rodar a cadeia **na ordem** e parar na primeira
+   reprovação.
+2. **O copidesque não tinha regra de decisão.** Aprovar listando erro objetivo é
+   o pior dos mundos — o erro segue achando que passou. Agora: erro de língua ele
+   **corrige direto no arquivo**; número sem fonte e mudança de sentido reprovam.
+3. **O jurídico não estava na cadeia.** Uma peça com risco alto chegou ao último
+   portão sem laudo. Agora `copydesk`, `revisor-marca` e `diretor-de-criacao` têm
+   um **gatilho jurídico** explícito (promessa, comparação mesmo indireta, pessoa
+   nomeada, preço, alegação de composição, setor regulado) e não podem decidir
+   sozinhos quando ele dispara.
+4. **`bloqueado` não existia como status.** Aparecia como decisão na ficha, mas
+   não na lista oficial — o agente de tráfego usou corretamente e o validador
+   acusou erro. Virou o 6º status, com a distinção documentada:
+   `ajustes_solicitados` é "o trabalho precisa mudar", `bloqueado` é "o trabalho
+   está certo e mesmo assim não pode seguir".
+5. **O veto vetava demais.** O laudo bloqueava tudo que tinha lido, inclusive o
+   briefing. Laudo agora declara `analisa:` (o que julga) separado de
+   `depende_de:` (o que leu).
+6. **O validador pulava frontmatter pela metade.** Arquivo com `id` e sem
+   `status` passava batido como se fosse um README. Agora é erro.
+
+## O que ficou aberto de propósito
+
+- `agente-video` e `agente-analytics` ainda não têm teste de comportamento —
+  passam nos validadores, falta rodar.
+- O post de teste está em `ajustes_solicitados` com a rodada 2 de 2 esgotada.
+  Pela regra dos 2 ciclos, ele **tem** que voltar ao `gerente-de-contas` e
+  reabrir como v3 — é assim que o exemplo fica no repositório.

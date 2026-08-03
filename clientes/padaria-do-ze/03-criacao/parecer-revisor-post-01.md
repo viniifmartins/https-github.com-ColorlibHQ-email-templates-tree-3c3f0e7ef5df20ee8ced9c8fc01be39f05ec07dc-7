@@ -5,11 +5,17 @@ fase: 03-criacao
 titulo: Parecer — Revisor de Marca sobre Post 01 (Encomendas de Natal)
 autor: agente-revisor-marca
 aprovador: diretor-de-criacao
-status: ajustes_solicitados
-versao: v1
+status: aprovado_interno
+versao: v2
 data: 2026-08-03
-depende_de: [KNG-PADARIA-MARCA-00, KNG-PADARIA-CRIA-01]
+depende_de: [KNG-PADARIA-MARCA-00, KNG-PADARIA-CRIA-01, KNG-PADARIA-COPYDESK-01]
 ---
+
+> Este arquivo preserva o histórico completo. A análise da **v1** (reprovada)
+> está abaixo, seguida pela análise da **v2** (rodada 2 de 2), que é a decisão
+> vigente.
+
+## Análise da v1 — 2026-08-03 (histórico, decisão superada pela v2 abaixo)
 
 ## Alerta prévio de processo (bloqueante, anterior ao mérito)
 
@@ -129,3 +135,82 @@ qualquer forma.
 9. Incluir ao menos uma prova verificável por tela (hora que sai do forno,
    endereço, ano, ou nome de quem atende a encomenda), conforme régua de
    decisão item 2 e valor "Mostrar em vez de adjetivar".
+
+---
+
+## Análise da v2 — 2026-08-03 (decisão vigente)
+
+**Peça revisada:** `clientes/padaria-do-ze/03-criacao/post-01-natal.md`, v2,
+rodada 2 de 2 — após aprovação do `agente-copydesk` (ver
+`parecer-copydesk-post-01.md`, KNG-PADARIA-COPYDESK-01).
+
+### Pré-requisito de processo (o que travava a v1)
+
+O bloqueio que abriu a análise da v1 estava no estado do `dna-marca.md`. Hoje
+ele está com `status: aprovado_cliente` e a Ficha de Aprovação preenchida:
+
+> "**Decisão:** ☑ aprovado_interno ... **Aprovação do cliente:** ☑
+> aprovado_cliente — data: 2026-08-03 — quem: Marcos e Cláudia, em conjunto."
+
+O pré-requisito está satisfeito. A única ressalva herdada é que as seções 3, 4
+e 10 do DNA seguem marcadas como **PREMISSA**, condicionadas à checagem de
+preço do item 11.4 do briefing — isso não bloqueia a revisão desta peça, mas
+segue valendo como risco registrado (ver correção 7 abaixo).
+
+### Correção por correção (as 9 pedidas na v1)
+
+| # | Correção pedida | Atendida? | Verificação na v2 |
+|---|---|---|---|
+| 1 | Regularizar a Ficha de Aprovação do DNA | **Sim** | `dna-marca.md` confirmado `aprovado_cliente`, ficha preenchida, data e nomes batendo. |
+| 2 | Tirar "REINVENTADA" / "Uma nova era" | **Sim** | Tela 1: "A MESMA MASSA DE SEMPRE. SÓ QUE EM FORMA DE PANETONE." — linguagem de continuidade. |
+| 3 | Tela 2 sem gourmet/premium/harmonização/exclusiva | **Sim** | Tela 2 traz só prova: fermentação 24h, horário 6h30, endereço a confirmar. Nenhum termo proibido. |
+| 4 | Tela 3 sem "experiência sensorial" e sem citar a Trigo Dourado pelo nome | **Sim** | "Duas quadras adiante cobram mais caro por um pão que fermenta menos tempo" — comparação indireta, sem nome de concorrente. |
+| 5 | Trocar "sob consulta no direct" por número visível | **Parcial, com pendência assumida pelo autor** | A tela 3 não tem mais "sob consulta"/"a partir de" sem valor — virou `[CONFIRMAR COM CLÁUDIA: preço de tabela]`. Não é a violação de vocabulário original (não é "sob consulta", não é "a partir de" vazio publicado), é um placeholder de produção explicitamente marcado como bloqueante de publicação na própria seção "Pendências" e na Ficha de Aprovação ("a peça não vai ao ar com marcador `[CONFIRMAR COM CLÁUDIA]` em pé"). Trato isso como correção de mérito atendida — o padrão proibido foi removido — mas mantenho a pendência de publicação registrada, não de aprovação interna. |
+| 6 | Remover "entrega em até 2 horas em qualquer endereço" | **Sim** | Promessa removida por inteiro; peça e microcopy de WhatsApp falam só em retirada na loja. |
+| 7 | Legenda sem "Prezado cliente"/"premium exclusiva"/"sob medida"/urgência artificial | **Sim** | Legenda em "a gente", segunda pessoa, Cláudia citada pelo nome, sem urgência artificial. |
+| 8 | Trocar #gourmet e #premium | **Sim** | Hashtags atuais: #padariadobairro #feitoaqui #desde1992 #santoandre #panetone #fermentacao24horas. |
+| 9 | Uma prova verificável por tela | **Sim** | Tela 1: ano/endereço; Tela 2: 24h + 6h30 + endereço; Tela 3: preço (placeholder, mas estrutura de preço visível existe); Tela 4: nome de quem atende + prazo. |
+
+Placar: 8 de 9 correções atendidas sem ressalva; a correção 5 foi atendida no
+mérito (removeu o padrão de vocabulário proibido), mas depende de dado externo
+(tabela de preço da Cláudia) para virar peça publicável — isso é pendência de
+publicação, já registrada pelo próprio executor, não desvio de DNA.
+
+### Pontuação — v2
+
+| Critério | Nota | Observação |
+|---|---|---|
+| Propósito | 5 | A peça reforça o eixo "mesma massa, preço na parede" — reafirma que pão de verdade não precisa virar artigo de luxo, sem uma única sugestão de upgrade de faixa. |
+| Posicionamento | 5 | Fica claro contra quem a marca joga: "duas quadras adiante cobram mais caro por um pão que fermenta menos tempo" reproduz a comparação indireta já aprovada no DNA §4, sem precisar nomear a Trigo Dourado. |
+| Tom de voz | 5 | "A gente", segunda pessoa, Cláudia citada pelo nome, sem "prezado cliente" nem urgência artificial — bate com a coluna "Coloquial 8/10" e a personalidade "Caseiro"/"Direto" do DNA §6-7. |
+| Público | 5 | Fala com a Juliana (quem nunca entrou, resolve por app) sem perder o Seu Antônio de vista — nenhuma linguagem de funil ou "clube", conforme régua de decisão item 4. |
+| Consistência visual | 4 | Peça é só copy (carrossel + legenda), então cor/tipo/forma não são avaliáveis diretamente; mas o texto respeita a diretriz "mostrar em vez de adjetivar" (prova real em toda tela) e não descreve nenhum elemento do Território Visual proibido (§9). Nota não é 5 porque a peça ainda não tem a arte final para conferência plena do sistema visual. |
+| Distintividade | 5 | Trocando "Padaria do Zé" por outra marca, a peça deixa de fazer sentido: "mesmo forno, mesmo endereço, desde 1992", "Seu Antônio", "Cláudia" e a fermentação de 24h são âncoras específicas desta marca, não substituíveis. |
+
+Nenhum critério ficou ≤ 2. Distintividade está em 5, acima do piso de 3.
+
+**Violações do DNA:** nenhuma identificada nesta rodada. O vocabulário
+proibido da seção 8 (`gourmet`, `premium`, `exclusivo`, `experiência
+sensorial`, `sob consulta`, `a partir de` sem número, `prezado cliente`,
+`reinventamos`/`nova era`, ataque nominal a concorrente) não aparece em
+nenhuma tela, na legenda, nas hashtags ou no microcopy.
+
+**Decisão:** `aprovado_interno`
+
+**Correções objetivas:** nenhuma nova. Mantenho, como condição de publicação
+já registrada pelo executor e não como pendência de aprovação de marca, que:
+1. A peça não pode ir ao ar com qualquer marcador `[CONFIRMAR COM CLÁUDIA]`
+   em pé (preço do panetone, preço do bolo, data-limite, endereço, e a
+   confirmação de que a padaria de fato produz panetone).
+2. Enquanto o item 12.5 do briefing (capacidade da cozinha) estiver aberto, a
+   peça deve continuar falando só em retirada na loja — o que a v2 já cumpre.
+3. Se a checagem de preço do item 11.4 do briefing (premissa herdada no DNA,
+   seções 3, 4 e 10) der contra a padaria, a Tela 3 precisa ser revista.
+
+Nenhum desses três pontos é desvio de DNA cometido pelo texto — são
+condições operacionais externas, já sinalizadas pelo próprio `agente-copy` e
+que cabem ao `gerente-de-contas` fechar com a cliente antes do agendamento,
+conforme o princípio 5 do CLAUDE.md.
+
+**Libero a peça para o `diretor-de-criacao`.** Do ponto de vista de marca, a
+v2 está `aprovado_interno` — pode seguir para a última etapa da cadeia.
