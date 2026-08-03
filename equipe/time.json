@@ -1,0 +1,163 @@
+{
+  "agencia": "KNG",
+  "versao": "1.0.0",
+  "atualizado_em": "2026-08-03",
+  "descricao": "Manifesto do time da KNG. Fonte única de verdade para o organograma, o fluxo de aprovação e, no futuro, para a visualização dos funcionários como personagens.",
+  "departamentos": [
+    { "id": "atendimento", "nome": "Atendimento",  "cor": "#2D6CDF", "sala": "recepcao" },
+    { "id": "descoberta",  "nome": "Descoberta",   "cor": "#7B4FD6", "sala": "sala-de-reuniao" },
+    { "id": "planejamento","nome": "Planejamento", "cor": "#0F9D8C", "sala": "sala-de-reuniao" },
+    { "id": "criacao",     "nome": "Criação",      "cor": "#E0603A", "sala": "estudio" },
+    { "id": "tecnologia",  "nome": "Tecnologia",   "cor": "#3A8FC7", "sala": "lab" },
+    { "id": "qualidade",   "nome": "Qualidade",    "cor": "#C7A03A", "sala": "estudio" }
+  ],
+  "estados_possiveis": ["ocioso", "trabalhando", "aguardando_insumo", "em_revisao", "revisando", "bloqueado", "entregue"],
+  "funcionarios": [
+    {
+      "id": "gerente-de-contas", "nome": "Gerente de Contas", "departamento": "atendimento",
+      "arquivo": ".claude/agents/gerente-de-contas.md", "modelo": "opus", "nivel": "lideranca",
+      "reporta_para": null, "aprova": ["agente-perguntas-iniciais","agente-briefing","agente-projeto","diretor-de-criacao","diretor-de-tecnologia"],
+      "aprovado_por": "humano", "recebe_de": [], "entrega_para": ["cliente"],
+      "avatar": { "emoji": "🧑‍💼", "cor": "#2D6CDF", "mesa": [0, 0], "acessorio": "prancheta" },
+      "fala_com_cliente": true
+    },
+    {
+      "id": "diretor-de-criacao", "nome": "Diretor de Criação", "departamento": "criacao",
+      "arquivo": ".claude/agents/diretor-de-criacao.md", "modelo": "opus", "nivel": "lideranca",
+      "reporta_para": "gerente-de-contas",
+      "aprova": ["agente-dna-marca","agente-logo","agente-identidade-visual","agente-copy","agente-imagens","agente-posts","agente-revisor-marca"],
+      "aprovado_por": "gerente-de-contas", "recebe_de": ["agente-revisor-marca"], "entrega_para": ["gerente-de-contas"],
+      "avatar": { "emoji": "🎨", "cor": "#E0603A", "mesa": [2, 0], "acessorio": "oculos" },
+      "fala_com_cliente": false
+    },
+    {
+      "id": "diretor-de-tecnologia", "nome": "Diretor de Tecnologia", "departamento": "tecnologia",
+      "arquivo": ".claude/agents/diretor-de-tecnologia.md", "modelo": "opus", "nivel": "lideranca",
+      "reporta_para": "gerente-de-contas",
+      "aprova": ["agente-arquitetura-site","agente-seo","agente-dev-web","agente-performance","agente-seguranca"],
+      "aprovado_por": "gerente-de-contas", "recebe_de": [], "entrega_para": ["gerente-de-contas"],
+      "avatar": { "emoji": "🧑‍💻", "cor": "#3A8FC7", "mesa": [4, 0], "acessorio": "fone" },
+      "fala_com_cliente": false
+    },
+    {
+      "id": "agente-perguntas-iniciais", "nome": "Analista de Onboarding", "departamento": "descoberta",
+      "arquivo": ".claude/agents/agente-perguntas-iniciais.md", "modelo": "sonnet", "nivel": "especialista",
+      "reporta_para": "gerente-de-contas", "aprova": [], "aprovado_por": "gerente-de-contas",
+      "recebe_de": ["gerente-de-contas"], "entrega_para": ["agente-briefing"],
+      "avatar": { "emoji": "📋", "cor": "#7B4FD6", "mesa": [0, 2], "acessorio": "formulario" },
+      "fala_com_cliente": false
+    },
+    {
+      "id": "agente-briefing", "nome": "Redator de Briefing", "departamento": "descoberta",
+      "arquivo": ".claude/agents/agente-briefing.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "gerente-de-contas", "aprova": [], "aprovado_por": "gerente-de-contas",
+      "recebe_de": ["agente-perguntas-iniciais"], "entrega_para": ["agente-dna-marca"],
+      "avatar": { "emoji": "📝", "cor": "#7B4FD6", "mesa": [1, 2], "acessorio": "caderno" },
+      "gate_cliente": true
+    },
+    {
+      "id": "agente-dna-marca", "nome": "Estrategista de Marca", "departamento": "descoberta",
+      "arquivo": ".claude/agents/agente-dna-marca.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-criacao", "aprova": [], "aprovado_por": "diretor-de-criacao",
+      "recebe_de": ["agente-briefing"], "entrega_para": ["agente-logo","agente-copy","agente-projeto"],
+      "avatar": { "emoji": "🧬", "cor": "#7B4FD6", "mesa": [2, 2], "acessorio": "quadro" },
+      "gate_cliente": true
+    },
+    {
+      "id": "agente-projeto", "nome": "Gerente de Projeto", "departamento": "planejamento",
+      "arquivo": ".claude/agents/agente-projeto.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "gerente-de-contas", "aprova": [], "aprovado_por": "gerente-de-contas",
+      "recebe_de": ["agente-dna-marca"], "entrega_para": ["gerente-de-contas"],
+      "avatar": { "emoji": "🗓️", "cor": "#0F9D8C", "mesa": [3, 2], "acessorio": "gantt" },
+      "gate_cliente": true
+    },
+    {
+      "id": "agente-logo", "nome": "Designer de Logo", "departamento": "criacao",
+      "arquivo": ".claude/agents/agente-logo.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-criacao", "aprova": [], "aprovado_por": "agente-revisor-marca",
+      "recebe_de": ["agente-dna-marca"], "entrega_para": ["agente-identidade-visual"],
+      "avatar": { "emoji": "✏️", "cor": "#E0603A", "mesa": [0, 4], "acessorio": "compasso" },
+      "gate_cliente": true
+    },
+    {
+      "id": "agente-identidade-visual", "nome": "Designer de Identidade", "departamento": "criacao",
+      "arquivo": ".claude/agents/agente-identidade-visual.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-criacao", "aprova": [], "aprovado_por": "agente-revisor-marca",
+      "recebe_de": ["agente-logo"], "entrega_para": ["agente-imagens","agente-dev-web"],
+      "avatar": { "emoji": "🎯", "cor": "#E0603A", "mesa": [1, 4], "acessorio": "paleta" },
+      "gate_cliente": true
+    },
+    {
+      "id": "agente-copy", "nome": "Redator Publicitário", "departamento": "criacao",
+      "arquivo": ".claude/agents/agente-copy.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-criacao", "aprova": [], "aprovado_por": "agente-revisor-marca",
+      "recebe_de": ["agente-dna-marca","agente-arquitetura-site"], "entrega_para": ["agente-posts","agente-dev-web"],
+      "avatar": { "emoji": "🖋️", "cor": "#E0603A", "mesa": [2, 4], "acessorio": "maquina-de-escrever" }
+    },
+    {
+      "id": "agente-imagens", "nome": "Diretor de Arte / Imagens", "departamento": "criacao",
+      "arquivo": ".claude/agents/agente-imagens.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-criacao", "aprova": [], "aprovado_por": "agente-revisor-marca",
+      "recebe_de": ["agente-identidade-visual"], "entrega_para": ["agente-posts","agente-dev-web"],
+      "avatar": { "emoji": "📸", "cor": "#E0603A", "mesa": [3, 4], "acessorio": "camera" }
+    },
+    {
+      "id": "agente-posts", "nome": "Social Media", "departamento": "criacao",
+      "arquivo": ".claude/agents/agente-posts.md", "modelo": "sonnet", "nivel": "especialista",
+      "reporta_para": "diretor-de-criacao", "aprova": [], "aprovado_por": "agente-revisor-marca",
+      "recebe_de": ["agente-copy","agente-imagens"], "entrega_para": ["gerente-de-contas"],
+      "avatar": { "emoji": "📱", "cor": "#E0603A", "mesa": [4, 4], "acessorio": "celular" }
+    },
+    {
+      "id": "agente-revisor-marca", "nome": "Guardião do DNA", "departamento": "qualidade",
+      "arquivo": ".claude/agents/agente-revisor-marca.md", "modelo": "sonnet", "nivel": "controle",
+      "reporta_para": "diretor-de-criacao",
+      "aprova": ["agente-logo","agente-identidade-visual","agente-copy","agente-imagens","agente-posts"],
+      "aprovado_por": "diretor-de-criacao", "recebe_de": ["criacao"], "entrega_para": ["diretor-de-criacao"],
+      "avatar": { "emoji": "🔍", "cor": "#C7A03A", "mesa": [5, 4], "acessorio": "lupa" }
+    },
+    {
+      "id": "agente-arquitetura-site", "nome": "Arquiteto de Informação", "departamento": "tecnologia",
+      "arquivo": ".claude/agents/agente-arquitetura-site.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-tecnologia", "aprova": [], "aprovado_por": "diretor-de-tecnologia",
+      "recebe_de": ["agente-projeto"], "entrega_para": ["agente-seo","agente-copy"],
+      "avatar": { "emoji": "🗺️", "cor": "#3A8FC7", "mesa": [0, 6], "acessorio": "planta" }
+    },
+    {
+      "id": "agente-seo", "nome": "Especialista em SEO", "departamento": "tecnologia",
+      "arquivo": ".claude/agents/agente-seo.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-tecnologia", "aprova": [], "aprovado_por": "diretor-de-tecnologia",
+      "recebe_de": ["agente-arquitetura-site"], "entrega_para": ["agente-dev-web","agente-copy"],
+      "avatar": { "emoji": "🔎", "cor": "#3A8FC7", "mesa": [1, 6], "acessorio": "grafico" }
+    },
+    {
+      "id": "agente-dev-web", "nome": "Desenvolvedor Web", "departamento": "tecnologia",
+      "arquivo": ".claude/agents/agente-dev-web.md", "modelo": "opus", "nivel": "especialista",
+      "reporta_para": "diretor-de-tecnologia", "aprova": [], "aprovado_por": "diretor-de-tecnologia",
+      "recebe_de": ["agente-seo","agente-identidade-visual","agente-copy","agente-imagens"], "entrega_para": ["agente-performance"],
+      "avatar": { "emoji": "⌨️", "cor": "#3A8FC7", "mesa": [2, 6], "acessorio": "monitor-duplo" }
+    },
+    {
+      "id": "agente-performance", "nome": "Especialista em Performance", "departamento": "tecnologia",
+      "arquivo": ".claude/agents/agente-performance.md", "modelo": "sonnet", "nivel": "especialista",
+      "reporta_para": "diretor-de-tecnologia", "aprova": [], "aprovado_por": "diretor-de-tecnologia",
+      "recebe_de": ["agente-dev-web"], "entrega_para": ["agente-seguranca"],
+      "avatar": { "emoji": "⚡", "cor": "#3A8FC7", "mesa": [3, 6], "acessorio": "cronometro" }
+    },
+    {
+      "id": "agente-seguranca", "nome": "Especialista em Segurança", "departamento": "tecnologia",
+      "arquivo": ".claude/agents/agente-seguranca.md", "modelo": "opus", "nivel": "controle",
+      "reporta_para": "diretor-de-tecnologia", "aprova": [], "aprovado_por": "diretor-de-tecnologia",
+      "recebe_de": ["agente-performance"], "entrega_para": ["diretor-de-tecnologia"],
+      "avatar": { "emoji": "🛡️", "cor": "#3A8FC7", "mesa": [4, 6], "acessorio": "escudo" },
+      "poder_de_veto": true
+    }
+  ],
+  "fases": [
+    { "id": "00-descoberta",  "nome": "Descoberta",  "agentes": ["agente-perguntas-iniciais","agente-briefing","agente-dna-marca"] },
+    { "id": "02-projeto",     "nome": "Planejamento","agentes": ["agente-projeto"] },
+    { "id": "01-marca",       "nome": "Marca",       "agentes": ["agente-logo","agente-identidade-visual"] },
+    { "id": "04-web",         "nome": "Web",         "agentes": ["agente-arquitetura-site","agente-seo","agente-dev-web","agente-performance","agente-seguranca"] },
+    { "id": "03-criacao",     "nome": "Conteúdo",    "agentes": ["agente-copy","agente-imagens","agente-posts"] }
+  ]
+}
