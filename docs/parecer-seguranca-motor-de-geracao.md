@@ -5,7 +5,7 @@ fase: docs
 titulo: Parecer de Segurança — Motor de Geração de Logo, Imagem e Vídeo (Higgsfield)
 autor: agente-seguranca
 aprovador: diretor-de-tecnologia
-status: em_revisao
+status: aprovado_interno
 versao: v1
 data: 2026-09-20
 depende_de: []
@@ -256,22 +256,36 @@ Cada aprovador preenche **só a sua linha**, na ordem.
 
 | # | Aprovador | Decisão | Data | Parecer detalhado em |
 |---|-----------|---------|------|----------------------|
-| 1 | `diretor-de-tecnologia` | ☐ aprovado ☐ ajustes | | (este arquivo é o parecer) |
+| 1 | `diretor-de-tecnologia` | ☑ aprovado (com ajustes de forma obrigatórios) | 2026-09-20 | [`parecer-dt-motor-de-geracao.md`](parecer-dt-motor-de-geracao.md) (`KNG-INT-DT-01`) |
 
 **Gatilho jurídico:** ☐ não se aplica ☐ acionado — laudo em `<caminho>`
 (promessa, comparação, pessoa nomeada, preço, alegação de composição ou setor
 regulado. Laudo `RISCO ALTO` bloqueia, mesmo com a cadeia toda aprovando.)
 
-**Decisão final (quem fecha a cadeia):**
-☐ aprovado_interno ☐ ajustes_solicitados ☐ bloqueado
+**Decisão final (quem fecha a cadeia — `diretor-de-tecnologia`, 2026-09-20):**
+☑ aprovado_interno ☐ ajustes_solicitados ☐ bloqueado
+Mérito aprovado: método explícito, limites declarados, achados com prova
+localizável e autocorreção de um achado preliminar falso. Vetos e condições
+seguem válidos e viram procedimento em `KNG-INT-DT-02`.
 
-**Ajustes obrigatórios:**
-1.
-2.
-3.
+**Ajustes obrigatórios (forma e registro — não alteram veredito):**
+1. Frontmatter: `analisa: [KNG-INT-SEG-01]` aponta para o próprio arquivo. Correto
+   é `analisa: []` — a auditoria tem por objeto repositórios de terceiro, já
+   declarados na tabela da seção 0, não um entregável da KNG. Publicar como `v2`.
+2. Seção 0: substituir "data de criação / commits / stars — NÃO VERIFICÁVEL" pelos
+   dados de fonte primária (API do GitHub, consulta de 2026-09-20): criado em
+   2026-08-26, 3 commits, 2.307 stars, 315 forks, dono `wide-trace` sem vínculo com
+   `higgsfield-ai`. Registrar como **contexto agravante**, não como fundamento do
+   veto — que segue em N-1, N-2 e N-3.
+3. Seção 2.1: registrar que `skills/higgsfield-brandkit/scripts/` não invoca o
+   binário fechado (só `rsvg-convert` e ImageMagick), fato relevante para a
+   arquitetura adotada.
 
 **Pendências que travam a PUBLICAÇÃO mas não a aprovação interna:**
-- `[CONFIRMAR COM ...]` em aberto
+- `[CONFIRMAR COM agente-juridico]` — laudo LGPD sobre transferência internacional
+  e base legal de dado biométrico (seção 3).
+- `[CONFIRMAR COM gerente-de-contas]` — DPA e aditivos da seção 3.4, itens 1 a 4.
+- Os três ajustes acima, antes de circular fora da equipe técnica.
 
 **Aderência ao DNA (preenchido pelo `agente-revisor-marca`):**
 | Critério | Nota (1-5) | Observação |
