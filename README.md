@@ -18,6 +18,8 @@ docs/01-fluxo-de-aprovacao.md  estados, quem aprova o quê, regra dos 2 ciclos
 docs/02-protocolo-de-handoff.md  formato obrigatório de todo entregável
 docs/03-como-adicionar-agente.md  como contratar mais gente
 docs/04-visualizacao-bonecos.md   como isso vira a tela dos bonecos trabalhando
+docs/06-revisao-da-base.md    auditoria da base: o que falta, em ordem de execução
+docs/07-motores-vetor-e-logo.md  pesquisa e desenho do motor vetor e do gerador de logo
 equipe/time.json             manifesto do time (organograma legível por máquina)
 templates/                   briefing, DNA, escopo, ficha de aprovação
 clientes/_exemplo/           estrutura padrão de pasta por cliente
@@ -90,6 +92,16 @@ O que já foi validado rodando o time de verdade está em
 O validador checa auto-aprovação, aprovador inexistente, ciclo de chefia,
 divergência entre os `.md` e o `time.json`, mesa ocupada por duas pessoas,
 agente fora do roteamento e link quebrado na documentação.
+
+## O que falta
+
+A auditoria completa da base está em
+[docs/06-revisao-da-base.md](docs/06-revisao-da-base.md): 22 lacunas
+priorizadas, com destaque para as três que travam um projeto real hoje — não
+existe trilha para o cliente que **já tem logo**, o DNA é escrito sem nenhum
+agente com acesso a pesquisa, e a Fase 2 termina em briefing porque **ninguém
+produz o vetor final**. O desenho técnico dos dois motores que faltam está em
+[docs/07-motores-vetor-e-logo.md](docs/07-motores-vetor-e-logo.md).
 
 ## Fase 2
 
