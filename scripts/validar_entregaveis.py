@@ -8,6 +8,7 @@ dependencias e cadeia de aprovacao.
 Uso:  python3 scripts/validar_entregaveis.py [cliente]
       (sem argumento, valida todos os clientes)
 """
+import datetime
 import json
 import pathlib
 import sys
@@ -26,6 +27,11 @@ CONTROLE = REVISORES
 VETO = {f["id"] for f in TIME["funcionarios"] if f.get("poder_de_veto")}
 # marcas de veto no corpo de um laudo
 BLOQUEIO = ["RISCO ALTO", "VETADO", "não publicar", "nao publicar"]
+
+# quem afirma coisa sobre o mundo la fora precisa dizer quando olhou.
+# ver docs/02-protocolo-de-handoff.md, "Entregavel que depende de pesquisa externa"
+PESQUISADORES = {"agente-pesquisa", "agente-seo"}
+VALIDADE_PESQUISA_DIAS = 90
 
 STATUS_VALIDOS = ["rascunho", "em_revisao", "ajustes_solicitados", "bloqueado", "aprovado_interno", "aprovado_cliente"]
 APROVADOS = ["aprovado_interno", "aprovado_cliente"]
@@ -129,6 +135,24 @@ for pasta in pastas:
                 avisos.append(
                     f"{rel}: aprovador '{aprovadores[0]}' nao e o primeiro da cadeia de {autor} ({' -> '.join(cadeia)})"
                 )
+
+        # pesquisa sem data de coleta envelhece em silencio
+        if autor in PESQUISADORES:
+            coletado = front.get("coletado_em")
+            if not coletado:
+                erros.append(f"{rel}: entregavel de pesquisa sem 'coletado_em' no frontmatter")
+            else:
+                try:
+                    dia = coletado if isinstance(coletado, datetime.date) else datetime.date.fromisoformat(str(coletado))
+                    idade = (datetime.date.today() - dia).days
+                    if idade > VALIDADE_PESQUISA_DIAS:
+                        avisos.append(
+                            f"{rel}: pesquisa coletada ha {idade} dias (limite {VALIDADE_PESQUISA_DIAS}) — peca refresh antes de decidir em cima dela"
+                        )
+                except ValueError:
+                    erros.append(f"{rel}: 'coletado_em' invalido ('{coletado}') — use AAAA-MM-DD")
+            if "| #" not in corpo and "http" not in corpo:
+                avisos.append(f"{rel}: entregavel de pesquisa sem tabela de fontes com URL")
 
         # veto de juridico/seguranca vale sobre toda a cadeia
         if front.get("id") in vetos and status in APROVADOS:

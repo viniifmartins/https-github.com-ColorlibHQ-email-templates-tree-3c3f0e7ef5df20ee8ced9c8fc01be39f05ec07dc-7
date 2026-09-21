@@ -227,3 +227,32 @@ Regra que não muda em nenhuma onda: cada agente novo entra com os **cinco
 passos** de [03-como-adicionar-agente.md](03-como-adicionar-agente.md)
 (arquivo, `time.json`, roteamento do gerente, organograma, validadores em zero)
 — e há 49 mesas livres na planta, então layout não é restrição.
+
+---
+
+## 8. Registro de execução
+
+### Onda 1 — feita em 21/09/2026
+
+| Item | O que entrou |
+|---|---|
+| 5 | **`agente-pesquisa`** (Descoberta, `WebSearch`/`WebFetch`, aprovado pelo `gerente-de-contas`) entregando `00-descoberta/pesquisa-mercado.md`: matriz de clichê da categoria, concorrentes com evidência, voz real do público em citação literal, checagem de nome (INPI, domínio, handles) e a seção 7, que é a lista do que só o cliente pode responder |
+| 6 | **`agente-seo` modo 1** — `00-descoberta/demanda-busca.md` na fase 00, antes do DNA: como o público nomeia o problema, demanda por intenção, entidades, perguntas reais e demanda de marca (que é medida de equity em rebranding) |
+| 7 | **`coletado_em:` no protocolo de handoff**, com tabela de fontes obrigatória, e `validar_entregaveis.py` reprovando pesquisa sem data e avisando acima de 90 dias |
+| — | `agente-dna-marca` e `agente-logo` com acesso à web, e com a pesquisa como **entrada obrigatória** — não como sugestão |
+| — | A fila do cliente passou a começar na pesquisa: `/novo-cliente`, roteamento do gerente e organograma atualizados |
+
+Decisão de desenho que vale registrar: `agente-perguntas-iniciais` **não**
+ganhou ferramentas de web. O arquivo dele mandava pesquisar sem ter como; a
+correção certa não era dar a ferramenta, era dar o insumo — pesquisa é
+entregável de quem pesquisa, com fonte, data e aprovador, e não observação
+solta dentro de um questionário.
+
+Testes do gate novo em [05-teste-do-fluxo.md](05-teste-do-fluxo.md), rodada 3.
+
+### Continua aberto
+
+Ondas 2 a 6 inteiras. Em especial o item **18** (ferramentas incoerentes):
+`agente-logo` já tem web, mas `agente-logo` e `agente-identidade-visual`
+seguem sem `Bash` — o que só vira bloqueio quando o motor vetor e o
+`validar_design.py` existirem, nas ondas 3 e 5.

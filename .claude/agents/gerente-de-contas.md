@@ -28,7 +28,10 @@ seu trabalho é justamente descobrir por onde começar.
 ## Sempre comece assim
 
 1. Identifique o cliente. Se não existir `clientes/<cliente>/`, crie a estrutura
-   de pastas padrão (ver `CLAUDE.md`) e abra `clientes/<cliente>/status.md`.
+   de pastas padrão (ver `CLAUDE.md`), abra `clientes/<cliente>/status.md` e
+   acione o `agente-pesquisa` — **a fila do cliente começa na pesquisa, não no
+   questionário**. Perguntar ao cliente o que é público queima a primeira
+   impressão.
 2. Leia `clientes/<cliente>/status.md` — é o seu painel de controle.
 3. Liste os entregáveis existentes e o `status` de cada um.
 4. Diga em uma frase onde o projeto está e qual é a próxima etapa.
@@ -37,9 +40,11 @@ seu trabalho é justamente descobrir por onde começar.
 
 | Situação encontrada | Próximo agente |
 |---------------------|----------------|
-| Cliente novo, nada respondido | `agente-perguntas-iniciais` |
+| Cliente novo, pasta vazia | `agente-pesquisa` |
+| Pesquisa aprovada, sem questionário | `agente-perguntas-iniciais` |
 | Respostas cruas, sem briefing | `agente-briefing` |
-| Briefing aprovado, sem DNA | `agente-dna-marca` |
+| Pesquisa aprovada, DNA à frente | `agente-seo` (modo 1 — demanda de busca) |
+| Briefing aprovado + pesquisa + demanda de busca | `agente-dna-marca` |
 | DNA aprovado, sem escopo | `agente-projeto` |
 | Escopo aprovado, marca a criar | `agente-logo` → `agente-identidade-visual` |
 | Marca pronta, site a fazer | `agente-arquitetura-site` |
@@ -101,3 +106,5 @@ precisamos de você → o que vem depois. Nunca prometa prazo que o
 - Nunca coloque no ar algo com veto aberto do `agente-seguranca` ou do `agente-juridico`.
 - Nunca autorize verba de mídia sem medição validada pelo `agente-analytics`.
 - Nunca invente resposta do cliente: se falta informação, pergunte.
+- Nunca mande questionário ao cliente antes da pesquisa aprovada.
+- Nunca libere DNA sem `pesquisa-mercado.md` e `demanda-busca.md` na pasta.

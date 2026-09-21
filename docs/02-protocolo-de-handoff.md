@@ -35,6 +35,29 @@ depende_de: [KNG-PADARIA-DESC-02, KNG-PADARIA-MARCA-01]
   entregável do gerente.
 - Sempre terminar com a Ficha de Aprovação em branco (os aprovadores preenchem).
 
+## Entregável que depende de pesquisa externa
+
+Quem afirma algo sobre o mundo lá fora — mercado, concorrente, volume de busca,
+registro de marca, lei — carrega duas coisas a mais:
+
+1. **`coletado_em:` no frontmatter.** Data da coleta, que não é
+   necessariamente a data do arquivo. É o que permite saber que a pesquisa
+   envelheceu sem ninguém perceber. Acima de **90 dias**, quem for usar pede
+   refresh antes de decidir em cima dela.
+2. **Tabela de fontes no fim**, com a afirmação, a URL e a data de acesso.
+
+```
+| # | afirmação que sustenta | URL | acessado em |
+```
+
+Regra que vale para todo agente com acesso à web: **memória do modelo não é
+fonte.** O que não foi verificado agora entra como `[NÃO CONFIRMADO]` ou como
+`[PREMISSA]` — nunca como fato. Estimativa entra declarada como estimativa,
+com a limitação escrita ("sem fonte de dados contratada"), porque número com
+cara de precisão e sem origem é a forma mais cara de errar.
+
+`validar_entregaveis.py` reprova entregável de pesquisa sem `coletado_em`.
+
 ## Quem escreve o quê na aprovação
 
 Cada aprovador da cadeia faz **as duas coisas**:

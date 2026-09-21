@@ -12,16 +12,16 @@
 │  DESCOBERTA    │ │  DIRETOR DE   │ │  DIRETOR DE   │ │ REVISOR DE MARCA │
 │                │ │   CRIAÇÃO     │ │  TECNOLOGIA   │ │ (guardião do DNA)│
 ├────────────────┤ ├───────────────┤ ├───────────────┤ └──────────────────┘
-│ perguntas-     │ │ logo          │ │ arquitetura-  │   revisa TODA peça
-│  iniciais      │ │ identidade-   │ │  site         │   antes de virar
-│ briefing       │ │  visual       │ │ seo           │   "aprovado_interno"
-│ dna-marca      │ │ copy          │ │ dev-web       │
-│ projeto        │ │ imagens       │ │ performance   │
-│                │ │ posts         │ │ seguranca     │
+│ pesquisa       │ │ logo          │ │ arquitetura-  │   revisa TODA peça
+│ perguntas-     │ │ identidade-   │ │  site         │   antes de virar
+│  iniciais      │ │  visual       │ │ seo           │   "aprovado_interno"
+│ briefing       │ │ copy          │ │ dev-web       │
+│ dna-marca      │ │ imagens       │ │ performance   │
+│ projeto        │ │ posts         │ │ seguranca     │
 └────────────────┘ └───────────────┘ └───────────────┘
 ```
 
-## Os 23 funcionários
+## Os 24 funcionários
 
 | # | Agente | Departamento | Cargo | Aprovado por |
 |---|--------|--------------|-------|--------------|
@@ -48,12 +48,18 @@
 | 21 | `agente-juridico` | Qualidade | Consultor Jurídico | gerente-de-contas |
 | 22 | `agente-analytics` | Mídia e Dados | Analista de Dados | diretor-de-tecnologia |
 | 23 | `agente-trafego-pago` | Mídia e Dados | Gestor de Tráfego | analytics → gerente-de-contas |
+| 24 | `agente-pesquisa` | Descoberta | Analista de Pesquisa | gerente-de-contas |
 
 ## Linha do tempo de um projeto completo
 
 ```
 FASE 0 — DESCOBERTA
-  perguntas-iniciais → briefing → [GATE CLIENTE] → dna-marca → [GATE CLIENTE]
+  pesquisa (mercado, concorrentes, voz do público, checagem de nome)
+    → perguntas-iniciais → briefing → [GATE CLIENTE]
+    → seo modo 1 (demanda de busca) → dna-marca → [GATE CLIENTE]
+
+  A pesquisa abre a fila: o questionário só pergunta o que a pesquisa não
+  respondeu, e o DNA só é escrito com evidência externa na mesa.
 
 FASE 1 — PLANEJAMENTO
   projeto (escopo + cronograma + orçamento) → [GATE CLIENTE]

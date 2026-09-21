@@ -1,7 +1,7 @@
 {
   "agencia": "KNG",
-  "versao": "1.1.0",
-  "atualizado_em": "2026-08-03",
+  "versao": "1.2.0",
+  "atualizado_em": "2026-09-21",
   "descricao": "Manifesto do time da KNG. Fonte única de verdade para o organograma, o fluxo de aprovação e, no futuro, para a visualização dos funcionários como personagens.",
   "departamentos": [
     {
@@ -66,6 +66,7 @@
       "nivel": "lideranca",
       "reporta_para": "humano",
       "aprova": [
+        "agente-pesquisa",
         "agente-perguntas-iniciais",
         "agente-briefing",
         "agente-projeto",
@@ -77,6 +78,7 @@
       "aprovado_por": "humano",
       "recebe_de": [],
       "entrega_para": [
+        "agente-pesquisa",
         "cliente"
       ],
       "avatar": {
@@ -160,6 +162,34 @@
       "fala_com_cliente": false
     },
     {
+      "id": "agente-pesquisa",
+      "nome": "Analista de Pesquisa",
+      "departamento": "descoberta",
+      "arquivo": ".claude/agents/agente-pesquisa.md",
+      "modelo": "opus",
+      "nivel": "especialista",
+      "reporta_para": "gerente-de-contas",
+      "aprova": [],
+      "aprovado_por": "gerente-de-contas",
+      "recebe_de": [
+        "gerente-de-contas"
+      ],
+      "entrega_para": [
+        "agente-perguntas-iniciais",
+        "agente-seo"
+      ],
+      "avatar": {
+        "emoji": "🔎",
+        "cor": "#7B4FD6",
+        "mesa": [
+          0,
+          2
+        ],
+        "acessorio": "lupa"
+      },
+      "pesquisa_externa": true
+    },
+    {
       "id": "agente-perguntas-iniciais",
       "nome": "Analista de Onboarding",
       "departamento": "descoberta",
@@ -170,7 +200,7 @@
       "aprova": [],
       "aprovado_por": "gerente-de-contas",
       "recebe_de": [
-        "gerente-de-contas"
+        "agente-pesquisa"
       ],
       "entrega_para": [
         "agente-briefing"
@@ -179,7 +209,7 @@
         "emoji": "📋",
         "cor": "#7B4FD6",
         "mesa": [
-          0,
+          1,
           2
         ],
         "acessorio": "formulario"
@@ -206,7 +236,7 @@
         "emoji": "📝",
         "cor": "#7B4FD6",
         "mesa": [
-          1,
+          2,
           2
         ],
         "acessorio": "caderno"
@@ -224,7 +254,9 @@
       "aprova": [],
       "aprovado_por": "diretor-de-criacao",
       "recebe_de": [
-        "agente-briefing"
+        "agente-briefing",
+        "agente-pesquisa",
+        "agente-seo"
       ],
       "entrega_para": [
         "agente-logo",
@@ -235,7 +267,7 @@
         "emoji": "🧬",
         "cor": "#7B4FD6",
         "mesa": [
-          2,
+          3,
           2
         ],
         "acessorio": "quadro"
@@ -262,7 +294,7 @@
         "emoji": "🗓️",
         "cor": "#0F9D8C",
         "mesa": [
-          3,
+          4,
           2
         ],
         "acessorio": "gantt"
@@ -494,11 +526,12 @@
       "aprova": [],
       "aprovado_por": "diretor-de-tecnologia",
       "recebe_de": [
+        "agente-pesquisa",
         "agente-arquitetura-site"
       ],
       "entrega_para": [
-        "agente-dev-web",
-        "agente-copy"
+        "agente-dna-marca",
+        "agente-dev-web"
       ],
       "avatar": {
         "emoji": "🔎",
@@ -745,8 +778,10 @@
       "id": "00-descoberta",
       "nome": "Descoberta",
       "agentes": [
+        "agente-pesquisa",
         "agente-perguntas-iniciais",
         "agente-briefing",
+        "agente-seo",
         "agente-dna-marca"
       ]
     },

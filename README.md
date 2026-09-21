@@ -8,7 +8,7 @@ coordena tudo e é o único que fala com o cliente.
 
 ```
 CLAUDE.md                    regras globais que todo agente obedece
-.claude/agents/              os 23 funcionários (1 arquivo = 1 agente)
+.claude/agents/              os 24 funcionários (1 arquivo = 1 agente)
 .claude/commands/            atalhos: /novo-cliente /status /proxima-etapa /aprovar ...
 scripts/validar_time.py      testa a consistência do time (rode antes de commitar)
 scripts/validar_entregaveis.py  testa os entregáveis contra o protocolo
@@ -28,7 +28,7 @@ clientes/_exemplo/           estrutura padrão de pasta por cliente
 ## O time
 
 **Atendimento** · gerente-de-contas
-**Descoberta** · perguntas-iniciais → briefing → dna-marca
+**Descoberta** · pesquisa → perguntas-iniciais → briefing → dna-marca
 **Planejamento** · projeto
 **Criação** · diretor-de-criacao · logo · identidade-visual · copy · imagens · posts · video
 **Tecnologia** · diretor-de-tecnologia · arquitetura-site · seo · dev-web · performance · seguranca

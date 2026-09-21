@@ -77,3 +77,33 @@ previa esse caso — foi a primeira correção da rodada.
 - O post de teste está em `ajustes_solicitados` com a rodada 2 de 2 esgotada.
   Pela regra dos 2 ciclos, ele **tem** que voltar ao `gerente-de-contas` e
   reabrir como v3 — é assim que o exemplo fica no repositório.
+
+# Rodada 3 — o gate de pesquisa
+
+Onda 1 de [06-revisao-da-base.md](06-revisao-da-base.md): entrou o
+`agente-pesquisa`, a fila do cliente passou a começar nele, e `dna-marca`,
+`logo` e `seo` ganharam entrada de pesquisa.
+
+| # | Teste | Resultado |
+|---|-------|-----------|
+| 14 | Frontmatter do `agente-seo` com `:` dentro da `description` sem aspas | ✅ `validar_time.py` pegou o YAML inválido e o efeito dominó (5 agentes apontando para um `agente-seo` que, para o validador, tinha deixado de existir) |
+| 15 | Entregável de pesquisa **sem** `coletado_em` | ✅ ERRO disparou, e o aviso de "sem tabela de fontes" veio junto |
+| 16 | Entregável de pesquisa com `coletado_em` de 254 dias | ✅ AVISO de refresh, sem barrar o arquivo — envelhecer não é erro, ignorar que envelheceu é |
+
+## O que a rodada 3 mudou
+
+1. **`coletado_em` virou campo do protocolo**, não recomendação de prosa. Quem
+   afirma coisa sobre o mundo lá fora diz quando olhou, e acima de 90 dias o
+   validador cobra refresh.
+2. **`agente-perguntas-iniciais` deixou de ser o começo da fila.** Ele não
+   ganhou `WebSearch`: ganhou um insumo. A pesquisa é entregável de quem
+   pesquisa, com fonte e data — não um comentário solto dentro do questionário,
+   que era o que o arquivo dele pedia sem ter ferramenta para cumprir.
+
+## Ainda aberto
+
+- `agente-pesquisa` passa nos validadores, mas falta teste de comportamento com
+  cliente real — em especial o caso "marca sem nenhuma presença pública".
+- Nenhum entregável de pesquisa existe no cliente de exemplo: `padaria-do-ze` é
+  fictícia, e inventar URLs para ilustrar seria violar a regra que a onda 1
+  acabou de criar.
